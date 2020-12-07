@@ -1,0 +1,42 @@
+{
+  "files": {
+    "main.css": "/static/css/main.7508af90.chunk.css",
+    "main.js": "/static/js/main.ae059005.chunk.js",
+    "main.js.map": "/static/js/main.ae059005.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.fef55f6d.js",
+    "runtime-main.js.map": "/static/js/runtime-main.fef55f6d.js.map",
+    "static/css/2.464c4ca8.chunk.css": "/static/css/2.464c4ca8.chunk.css",
+    "static/js/2.e1056c5a.chunk.js": "/static/js/2.e1056c5a.chunk.js",
+    "static/js/2.e1056c5a.chunk.js.map": "/static/js/2.e1056c5a.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.76fe9eff202ba7997c95ecbe44393e56.js": "/precache-manifest.76fe9eff202ba7997c95ecbe44393e56.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.464c4ca8.chunk.css.map": "/static/css/2.464c4ca8.chunk.css.map",
+    "static/css/main.7508af90.chunk.css.map": "/static/css/main.7508af90.chunk.css.map",
+    "static/js/2.e1056c5a.chunk.js.LICENSE.txt": "/static/js/2.e1056c5a.chunk.js.LICENSE.txt",
+    "static/media/Dropdown.png": "/static/media/Dropdown.91cdfcc6.png",
+    "static/media/Easy_Returns-512.png": "/static/media/Easy_Returns-512.e8a30764.png",
+    "static/media/Point 2.png": "/static/media/Point 2.0d82051d.png",
+    "static/media/UploadIcon.svg": "/static/media/UploadIcon.1cedb6e9.svg",
+    "static/media/admin.png": "/static/media/admin.7ea5c951.png",
+    "static/media/blank.png": "/static/media/blank.b6681619.png",
+    "static/media/bullet.png": "/static/media/bullet.97a9d08a.png",
+    "static/media/credit_card.png": "/static/media/credit_card.68b7f947.png",
+    "static/media/default-img.png": "/static/media/default-img.f065b10c.png",
+    "static/media/gates-renewable.png": "/static/media/gates-renewable.ede2717d.png",
+    "static/media/gates.png": "/static/media/gates.0dfa5ec7.png",
+    "static/media/logo_icon.jpg": "/static/media/logo_icon.f3ac8c9f.jpg",
+    "static/media/message.png": "/static/media/message.d40fcd85.png",
+    "static/media/notification.jpg": "/static/media/notification.c963fb87.jpg",
+    "static/media/pro.png": "/static/media/pro.2860bd18.png",
+    "static/media/profile-icon.jpg": "/static/media/profile-icon.5d43d38e.jpg",
+    "static/media/styles.css": "/static/media/revicons.2feb69cc.eot"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.fef55f6d.js",
+    "static/css/2.464c4ca8.chunk.css",
+    "static/js/2.e1056c5a.chunk.js",
+    "static/css/main.7508af90.chunk.css",
+    "static/js/main.ae059005.chunk.js"
+  ]
+}
