@@ -8,11 +8,7 @@ use App\Models\Category;
 
 
 class HomeController extends Controller
-{    
-    
-
-
-
+{
 	public function test()
 	{
 		$categoris = Category::where('parent_id',NULL)->get();
@@ -22,24 +18,17 @@ class HomeController extends Controller
 			$subCategories =  Category::select('cat_name')->where('parent_id',$cat_id)->get();
 			$data[] = [
 				'id' => $c->id ,
-				'cat_name' => $c->cat_name , 
+				'cat_name' => $c->cat_name ,
 				'subcategories' => $subCategories
 			];
 		}
 		return response()->json($data);
 	}
 
-
-
-
-
-
-    
     public function index(Request $r)
     {
-		return \File::get(public_path() . '/front_end/index.html'); 
+		return \File::get(public_path() . '/front_end/index.html');
     }
 }
 
 
- 

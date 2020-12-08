@@ -11,61 +11,61 @@
         <div class="col-md-12 alternates" style="max-width: 500px !important; min-height: 500px">
             <div class="col-sm-12 bg-white area_auth">
                 <div class="col-md-12 col-sm-12 part_1">
-
+                    @if (session('status'))
                     <div class="alert alert-success">
-
+                        {{ session('status') }}
                     </div>
-
+                    @endif
                     @include('systems.message')
                     <form id="second_reg_form" class="form-horizontal" method="POST" action="">
                         {{ csrf_field() }}
 
-                        <div class="form-group">
+                        <div class="form-group{{ $errors->has('first_name') ? ' has-error' : '' }}">
                             <label for="first_name" class="control-label">First Name</label>
 
                             <div>
                                 <input id="first_name" type="text" class="form-control" name="first_name"
-                                    value="" maxlength="10" required>
+                                    value="{{ old('first_name') }}" maxlength="10" required>
 
-
+                                @if ($errors->has('first_name'))
                                 <span class="help-block text-danger">
-                                    <strong></strong>
+                                    <strong>{{ $errors->first('first_name') }}</strong>
                                 </span>
-
+                                @endif
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group{{ $errors->has('last_name') ? ' has-error' : '' }}">
                             <label for="last_name" class="control-label">Last Name</label>
 
                             <div>
                                 <input id="last_name" type="text" class="form-control" name="last_name"
-                                    value="" maxlength="10" required>
+                                    value="{{ old('last_name') }}" maxlength="10" required>
 
-
+                                @if ($errors->has('last_name'))
                                 <span class="help-block text-danger">
-                                    <strong></strong>
+                                    <strong>{{ $errors->first('last_name') }}</strong>
                                 </span>
-
+                                @endif
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="control-label">E.Mail</label>
 
                             <div>
                                 <input id="email" type="email" class="form-control" name="email"
-                                    value="" readonly>
+                                    value="{{ $user->email }}" readonly>
 
-
+                                @if ($errors->has('email'))
                                 <span class="help-block text-danger">
-                                    <strong></strong>
+                                    <strong>{{ $errors->first('email') }}</strong>
                                 </span>
-
+                                @endif
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="control-label">Password<a href="#" data-toggle="tooltip"
                                     data-html="true"
                                     title="Password must be at least 8 characters long. <br/> Allowed characters are as follows. A-Z, a-z, #, @, 0-9">?</a></label>
@@ -79,23 +79,24 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
                             <label for="password_confirmation" class="control-label">Confirm Password</label>
 
                             <div>
                                 <input id="password_confirmation" type="password" class="form-control"
-                                    name="password_confirmation" value="" required>
+                                    name="password_confirmation" value="{{ $user->password_confirmation }}" required>
 
-
+                                @if ($errors->has('password_confirmation'))
                                 <span class="help-block text-danger">
 
-                                    <strong></strong>
+                                    <strong>{{ $errors->first('password_confirmation') }}</strong>
                                 </span>
-
+                                @endif
+                                @if ($errors->has('password'))
                                 <span class="help-block text-danger">
-                                    <strong></strong>
+                                    <strong>{{ $errors->first('password') }}</strong>
                                 </span>
-
+                                @endif
                             </div>
                         </div>
                     </form>
@@ -108,21 +109,7 @@
                         </div>
                     </div>
                 </div>
-                {{--<div class="col-12 part_2">
-                    <table style="width: 100%">
-                        <tr>
-                            <td style="width: 33.33%; padding-left: 25px; padding-right: 25px"><a href="{{route('front-facebook')}}"
-                class="btn btn-primary btn-lg btn-block facebook" style="border-radius: 25px !important;"><i
-                    class="fa fa-facebook"></i></a></td>
-                <td style="width: 33.33%; padding-left: 25px; padding-right: 25px"><a href="{{route('front-google')}}"
-                        class="btn btn-danger btn-lg btn-block google" style="border-radius: 25px !important;"><i
-                            class="fa fa-google"></i></a></td>
-                <td style="width: 33.33%; padding-left: 25px; padding-right: 25px"><a href="{{route('front-twitter')}}"
-                        class="btn btn-info btn-lg btn-block twitter" style="border-radius: 25px !important;"><i
-                            class="fa fa-twitter"></i></a></td>
-                </tr>
-                </table>
-            </div>--}}
+
         </div>
 </div>
 </section>
@@ -145,7 +132,23 @@
                     errors = "パソワードが８文字以上にする必要です";
                     flag = 1;
                 }
-
+                //password has number and chars
+                // else if (!password.match(/([a-zA-Z])/)) {
+                //         errors = "Passwords must contain at least one letter";
+                //         flag = 1;
+                // }
+                // else if (!password.match(/([0-9])/)) {
+                //     errors = "Passwords must contain at least one number";
+                //     flag = 1;
+                // }
+                // else if (!password.match(/([!,@,#,$,%,^,&,*,?,_,~])/)){
+                //     errors = "Passwords must contain at least one symbol";
+                //     flag = 1;
+                // }
+                // else if (!password.match(/([A-Z])/)) {
+                //     errors = "Passwords must contain at least one capitalized letter";
+                //     flag = 1;
+                // }
                 if (flag == 1) {
                     $('#errors_pass').html(errors);
                     // alert('fdssd');
@@ -158,6 +161,10 @@
         });
     });
 
+    // function disable() {
+    //     $("#submitbtn").attr("disabled", true);
+    //     $("#second_reg_form").submit();
+    // }
 </script>
     <script>
         function disable() {

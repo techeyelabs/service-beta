@@ -12,7 +12,7 @@
 
 */
 // Authentication Routes Check
-Route::get('/homepage', function () { return view('systems.homepage'); });
+
 Route::get('/authlog', function () { return view('authentication.login'); });
 Route::get('/authreg', function () { return view('authentication.register_request'); });
 Route::get('/authregi', function () { return view('authentication.register'); });
@@ -25,16 +25,19 @@ Route::get('/regstep1', function () { return view('authentication.email.registra
 Route::get('/regstep2', function () { return view('authentication.email.registration_step2'); });
 
 // Authentication Routes
+Route::get('/homepage', 'User\HomeController@homepage')->name('homepage');
 Route::get('/register-request', 'User\AuthController@registerRequest')->name('user-register-request');
 Route::post('/register-request', 'User\AuthController@registerRequestAction')->name('user-register-request-action');
 Route::get('/register/{token}', 'User\AuthController@register')->name('user-register');
 Route::post('/register/{token}', 'User\AuthController@registerAction')->name('user-register-action');
+Route::get('/login', 'User\HomeController@loginmethod')->name('login');
+Route::post('/login', 'User\HomeController@loginAction')->name('loginAction');
 
 Route::get('/phpinfo', function(){
 	phpinfo();
 });
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index')->name('home');
 
 
 Route::get('/test', 'API\TestController@test');
@@ -79,9 +82,9 @@ Route::get('/aff/{ref_code}', 'HomeController@index');
 Route::get('/about', 'HomeController@index');
 Route::get('/faq', 'HomeController@index');
 Route::get('/search-results/{id}', 'HomeController@index');
-Route::get('/login', 'HomeController@index');
-Route::get('/login/seller', 'HomeController@index');
-Route::get('/login/affiliator', 'HomeController@index');
+Route::get('/logina', 'HomeController@index');
+Route::get('/logina/seller', 'HomeController@index');
+Route::get('/logina/affiliator', 'HomeController@index');
 Route::get('/seller-registration-step-1', 'HomeController@index');
 Route::get('/seller-registration-step-2', 'HomeController@index');
 Route::get('/buyer-registration-step-1', 'HomeController@index');

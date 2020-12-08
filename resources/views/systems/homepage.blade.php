@@ -1,312 +1,153 @@
+
 @extends('systems.main')
 
 @section('custom_css')
-<style type="text/css">
-	.carousel-caption{
-		/*bottom: 20% !important;*/
+<style media="screen" type="text/css">
+	.title:hover {
+		color: #618ca9;
 	}
-	.btn-cta{
-		padding-top: 15px;
-		padding-bottom: 15px;
+
+	.category:hover {
+		color: #618ca9;
 	}
-	.extra_div{
-		background-color: white;
-		/* border: 1px solid #f1f1f1; */
-		border-radius: 1%;
-		padding: 0%;
-		box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.2), 0 5px 15px 0 rgba(0, 0, 0, 0.19);
+
+	.res_banner {
+		padding-left: 5%;
+		padding-right: 5%;
+		height: 650px;
 	}
-	@media only screen and (max-width: 600px) {
-		.small_collapse {
-			padding-left: 5px !important;
-			padding-right: 5px !important;
-		}
-		.big_sticker{
-			height: 175px !important;
+
+	@media only screen and (max-width: 768px) {
+		.res_banner {
+			height: auto !important
 		}
 	}
-	@media only screen and (max-width: 600px) {
-		.small_sticker {
-			height: 115px !important;
-		}
-		.small_sticket_title{
-			height: 24px !important;
-		}
-	}
-	@media only screen and (max-width: 600px) {
-		.small_screen_font {
-			font-size: 9px !important;
-		}
-	}
-	
-	.big_sticker{
-		width: 100%; 
-		height: 380px;
-		object-fit: cover
-	}
-	.sticker_text{
-		font-size: 12px !important;
-	}
-	.ratio_test {
-		position: relative;
-		width: 100%;
-		/* padding-top: 56.25%; 16:9 Aspect Ratio */
-	}
-    .project_item, .project_img{
-      position: relative;
-     
-  }
-  .project_item{
-      border: 1px solid rgba(0,0,0,.125);
-      margin-bottom: 30px;
-  }
-  .alternates{
-    margin: 0 auto !important; 
-    max-width: 1500px !important;
-}
 </style>
 @stop
 
 @section('content')
-{{-- Start --}}
 
 
-
-<div class="col-md-12 p-0 alternates">
-	<div class="col-md-12 row flex_cont" style="margin-left: 0px !important;">
-		
-		<div class="col-md-6 extra_div ratio_test" style="margin-bottom: 30px">
-			<div>
-				<a href="#">
-					<div  class="project_img" style="width:100%;  background-color:#fff; background-repeat: no-repeat;
-						background-position: center center; background-size: cover;">
-						<img class="big_sticker"  src="{{url('uploads/service/1.jpg')}}" alt="First slide">
-					</div>
-				</a>
-			</div>
-			<div class="project_text">
-				<ul class="project_tags list-inline project_category_items special">
-					<li class="list-inline-item">
-						<i class="fa fa-tag"></i> <a href="#" class="category"></a>
-					</li>
-				</ul>
-				<span class="project_title "><a  style="font-size: 25px" title="" class="title" href="#"></a></span>
-
-				<div class="row project_progress pt-2 pb-2">
-					<div class="col-12">
-						<div class="progress project_progress">
-							{{-- <div class="progress-bar bg-primary w-{{ $done }}" style="width:{{ $done }}%;" role="progressbar" aria-valuenow="{{ $done }}" aria-valuemin="0" aria-valuemax="100"><p style="margin: 0px !important; color: white">&nbsp;{{ $done }}%</p></div> --}}
-						</div>
-					</div>
-				</div>
-				<div class="row project_item_footer">
-					<div class="col-5" style="padding-right: 0px !important">
-						<span class="big_sticker_small" style="font-size: 22px">&#2547; 10000 raised</span>
-					</div>
-					
-					<div class="col-3 text-center" style="padding: 3px !important">
-					
-							<p  class="big_sticker_small" style="font-size: 22px; color: red">interval</p>
-					
-							<p  class="big_sticker_small" style="font-size: 22px">10 days left</p>
-						
-					</div>
-					<div class="col-4 text-right" style="padding-left: 0px !important">
-						<span  class="big_sticker_small" style="font-size: 22px">10 donors</span>
-					</div>
-				</div>
-			</div>
-		</div>	
-	
-		
-	
-		<div class="col-md-6 col-sm-6">
-			<div class="row">
-				<div class="col-6 small_collapse" style="padding-right: 5px !important">
-					
-					
-						<div class="project_item four_stickers extra_div small_screen_font" style="">
-							<a href="#">
-								<div  class="project_img small_sticker small_sticker_styles" style="background-image: url({{url('uploads/service/2.jpg')}}); height:160px;">
-									
-								</div>
-							</a>
-
-
-							<div class="project_text" style="padding-top: 0px !important">
-								<ul class="project_tags list-inline project_category_items special">
-									<li class="list-inline-item">
-										<i class="fa fa-tag"></i> <a style="font-size: 10px" href="#" class="category">Category name</a>
-									</li>
-								</ul>
-                                <span class="project_title title small_screen_font"><a class="small_screen_font special small_sticket_title" style="font-size: 12px;  height: 32px"
-                                     title="Small 1 Title" href="#">Small 1 Title</a></span>
-
-								<div class="row project_progress pb-2">
-									<div class="col-12">
-										<div class="progress project_progress">
-											{{-- <div class="progress-bar bg-primary w-{{ $done }}" style="width:{{ $done }}%;" role="progressbar" aria-valuenow="{{ $done }}" aria-valuemin="0" aria-valuemax="100"><p style="margin: 0px !important; color: white">&nbsp;{{ $done }}%</p></div> --}}
-										</div>
-									</div>
-								</div>
-								<div class="row project_item_footer special pl-3 pr-3">
-								
-									<div class="" style="font-size: 11px; padding-right: 0px !important">
-										<span>&#2547; 2500 raised &nbsp;</span>&nbsp;
-										
-											<span style="font-size: 11px; color: red">interval</span>&nbsp;
-										
-											<span style="font-size: 11px"> 10 days left</span>&nbsp;
-									
-										<span class="text-right">&nbsp; 10 donors</span>
-									</div>
-								</div>
-							</div>
-						</div>	
-					
-				</div>
-				<div class="col-6 small_collapse" style="padding-left: 5px !important">
-				
-				
-						<div class="project_item four_stickers extra_div small_screen_font" style="">
-							<a href="#">
-								<div  class="project_img small_sticker small_sticker_styles" style="background-image: url({{url('uploads/service/2.jpg')}}); height:160px;">
-								</div>
-							</a>
-							<div class="project_text"  style="padding-top: 0px !important">
-								<ul class="project_tags list-inline project_category_items special">
-									<li class="list-inline-item">
-										<i class="fa fa-tag"></i> <a style="font-size: 10px" href="#" class="category">category name</a>
-									</li>
-								</ul>
-                                <span class="project_title title small_screen_font" ><a class="small_screen_font special small_sticket_title" style="font-size: 12px;  height: 32px" 
-                                    title="title" class="title small_screen_font" href="#">This is title</a></span>
-
-								<div class="row project_progress pb-2">
-									<div class="col-12">
-										<div class="progress project_progress">
-											{{-- <div class="progress-bar bg-primary w-{{ $done }}" style="width:{{ $done }}%;" role="progressbar" aria-valuenow="{{ $done }}" aria-valuemin="0" aria-valuemax="100"><p style="margin: 0px !important; color: white">&nbsp;{{ $done }}%</p></div> --}}
-										</div>
-									</div>
-								</div>
-								<div class="row project_item_footer special pl-3 pr-3">
-								
-									<div class="" style="font-size: 11px; padding-right: 0px !important">
-										<span>&#2547; 15000 raised &nbsp;</span>&nbsp;
-									
-											<span style="font-size: 11px; color: red">interval</span>&nbsp;
-									
-											<span style="font-size: 11px">10 days left &nbsp;</span>&nbsp;
-									
-										<span class="text-right">&nbsp; 10 donors </span>
-									</div>
-								</div>
-							</div>
-						</div>
-					
-				</div>
-			</div>
-			
-			<div class="row">
-				<div class="col-6 small_collapse" style="padding-right: 5px !important">
-					
-					
-						<div class="project_item four_stickers extra_div small_screen_font" style="">
-							<a href="#">
-								<div  class="project_img small_sticker small_sticker_styles" style="background-image: url({{url('uploads/service/2.jpg')}}); height:160px;">
-									
-								</div>
-							</a>
-
-
-							<div class="project_text" style="padding-top: 0px !important">
-								<ul class="project_tags list-inline project_category_items special">
-									<li class="list-inline-item">
-										<i class="fa fa-tag"></i> <a style="font-size: 10px" href="#" class="category">Category name</a>
-									</li>
-								</ul>
-                                <span class="project_title title small_screen_font"><a class="small_screen_font special small_sticket_title" style="font-size: 12px;  height: 32px"
-                                     title="Small 1 Title" href="#">Small 1 Title</a></span>
-
-								<div class="row project_progress pb-2">
-									<div class="col-12">
-										<div class="progress project_progress">
-											{{-- <div class="progress-bar bg-primary w-{{ $done }}" style="width:{{ $done }}%;" role="progressbar" aria-valuenow="{{ $done }}" aria-valuemin="0" aria-valuemax="100"><p style="margin: 0px !important; color: white">&nbsp;{{ $done }}%</p></div> --}}
-										</div>
-									</div>
-								</div>
-								<div class="row project_item_footer special pl-3 pr-3">
-								
-									<div class="" style="font-size: 11px; padding-right: 0px !important">
-										<span>&#2547; 2500 raised &nbsp;</span>&nbsp;
-										
-											<span style="font-size: 11px; color: red">interval</span>&nbsp;
-										
-											<span style="font-size: 11px"> 10 days left</span>&nbsp;
-									
-										<span class="text-right">&nbsp; 10 donors</span>
-									</div>
-									
-									<!-- 応援者 Supporter -->
-								</div>
-							</div>
-						</div>	
-					
-				</div>
-				<div class="col-6 small_collapse" style="padding-left: 5px !important">
-				
-				
-						<div class="project_item four_stickers extra_div small_screen_font" style="">
-							<a href="#">
-								<div  class="project_img small_sticker small_sticker_styles" style="background-image: url({{url('uploads/service/2.jpg')}}); height:160px;">
-								</div>
-							</a>
-							<div class="project_text"  style="padding-top: 0px !important">
-								<ul class="project_tags list-inline project_category_items special">
-									<li class="list-inline-item">
-										<i class="fa fa-tag"></i> <a style="font-size: 10px" href="#" class="category">category name</a>
-									</li>
-								</ul>
-                                <span class="project_title title small_screen_font" ><a class="small_screen_font special small_sticket_title" style="font-size: 12px;  height: 32px" 
-                                    title="title" class="title small_screen_font" href="#">This is title</a></span>
-
-								<div class="row project_progress pb-2">
-									<div class="col-12">
-										<div class="progress project_progress">
-											{{-- <div class="progress-bar bg-primary w-{{ $done }}" style="width:{{ $done }}%;" role="progressbar" aria-valuenow="{{ $done }}" aria-valuemin="0" aria-valuemax="100"><p style="margin: 0px !important; color: white">&nbsp;{{ $done }}%</p></div> --}}
-										</div>
-									</div>
-								</div>
-								<div class="row project_item_footer special pl-3 pr-3">
-								
-									<div class="" style="font-size: 11px; padding-right: 0px !important">
-										<span>&#2547; 15000 raised &nbsp;</span>&nbsp;
-									
-											<span style="font-size: 11px; color: red">interval</span>&nbsp;
-									
-											<span style="font-size: 11px">10 days left &nbsp;</span>&nbsp;
-									
-										<span class="text-right">&nbsp; 10 donors </span>
-									</div>
-								</div>
-							</div>
-						</div>
-					
-				</div>
-			</div>
-			
-		</div>	
-		
-		
-	</div>
+<div style="width: 100%; height: 10px">&nbsp;</div>
+<div class="res_banner p-0">
+	@include('systems.banner')
 </div>
+<br />
+<section class="project_list flex_cont p-3" style="">
+	<div class="col-md-12 alternates">
+		<div class="col-sm-12 ml-1 mr-1">
+			<div class=" text-center  pl-2 pr-2">
+				<div><a href="#"><button class="extra_banner_top btn uBtnB"
+							style="font-size: 25px !important"><b>Start Raising</b></button></a></div>
+			</div>
+		</div>
+	</div>
+</section>
+<br />
+<section class="project_list mb-5 pb-5">
+	<div class="col-md-12 alternates">
+		<div class="col-sm-12">
+
+			<div class="text-left pl-1">
+				<h2 style="font-size: 1.5rem;">Latest Projects</h2>
+				<div style="height: 20px"></div>
+				<div class="row flex_cont pr-1">
+
+					<div class="col-md-3">
+					@include('systems.project-all')
+					</div>
+
+				</div>
+			</div>
+			<button class="btn uBtn" style="float: right;" onclick="location.href='#';">See More..</button>
+
+			<div class="text-left pl-1 pt-5" id="topDonation">
+				<h2 style="font-size: 1.5rem;">Top Donation</h2>
+				<div style="height: 20px"></div>
+				<div class="row flex_cont pr-1" id="td">
+
+					<div class="col-md-3">
+						@include('systems.project-all')
+					</div>
+
+				</div>
+			</div>
+			<button class="btn uBtn" style="float: right;" onclick="location.href='#';">See More..</button>
+
+			<div class="text-left pl-1 pt-5">
+				<h2 style="font-size: 1.5rem;">End Soon</h2>
+
+				<div style="height: 20px"></div>
+				<div class="row flex_cont pr-1">
+
+					<div class="col-md-3">
+						@include('systems.project-all')
+					</div>
+
+				</div>
+			</div>
+			<button class="btn uBtn" style="float: right;" onclick="location.href='#';">See More..</button>
+
+
+			<div class="text-left pl-1 pt-5">
+				<h2 style="font-size: 1.5rem;">Coming Soon</h2>
+
+				<div style="height: 20px"></div>
+				<div class="row flex_cont pr-1">
+
+					<div class="col-md-3">
+						@include('systems.project-all')
+					</div>
+
+				</div>
+			</div>
+			<button class="btn uBtn pb-4" style="float: right;" onclick="location.href='#';">See More..</button>
 
 
 
-@include('systems.homepagecatlist')
-{{-- End --}}
+
+
+
+	</div>
+	</div>
+</section>
 @stop
 
 @section('custom_js')
+@yield('sort_js')
 
+<!-- <script>
+	var topDonation = document.getElementById("topDonation");
+	var td = document.getElementById("td")
+	if (td.value == "") {
+		topDonation.style.display = "none";
+	}
+</script> -->
+
+<script type="text/javascript">
+	$('.banner_slider').slick({
+		centerMode: true,
+		centerPadding: '60px',
+		slidesToShow: 1,
+		responsive: [{
+				breakpoint: 768,
+				settings: {
+					arrows: false,
+					centerMode: true,
+					centerPadding: '40px',
+					slidesToShow: 3
+				}
+			},
+			{
+				breakpoint: 480,
+				settings: {
+					arrows: false,
+					centerMode: true,
+					centerPadding: '40px',
+					slidesToShow: 1
+				}
+			}
+		]
+	});
+</script>
 @stop

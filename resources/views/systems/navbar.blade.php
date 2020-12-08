@@ -220,7 +220,7 @@
                     <div class="pp">
                     <img class="" id="mymenu" onclick="show()" class="" style="border-radius: 50%; width: 40px"
                         src="{{Request::root().'/uploads/'.Auth::user()->pic}}" alt="...">
-                        <span class="ppbadge" id="ppbadge"></span>
+                        <!-- <span class="ppbadge" id="ppbadge"></span> -->
                     </div>
                     <div class="tooltiptext" style="width: 180px; text-align: left; margin-left: -100px !important; z-index: 1 !important;">
                         <div class="bottomline" style="padding-bottom: 0px !important; font-size: 14px" id="my-name">
@@ -237,7 +237,7 @@
                                         <div class="bottomline notification mt-2 mb-1" id="notification">
 
                                             <span class="mb-0" style="padding-bottom: 0px !important; padding-top:4px !important;">	Notifications </span>
-                                            <span class="badge" id="badgecount">3</span>
+                                            <!-- <span class="badge" id="badgecount">3</span> -->
                                         </div>
 
 
@@ -251,8 +251,7 @@
             </a>
         </li>
         @else
-        <li class="list-inline-item"><a href="#"
-                class="login_reg_buttons">Login <b>/</b></a></li>
+        <li class="list-inline-item"><a href="{{ route('login') }}"  class="login_reg_buttons">Login <b>/</b></a></li>
         <li class="list-inline-item"><a href="#"
                 class="login_reg_buttons">Logout</a></li>
         @endif

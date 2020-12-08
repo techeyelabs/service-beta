@@ -38,4 +38,8 @@ class Profile extends Model
     {
         return $this->belongsTo('App\Models\Sex', 'sex');
     }
+    public function user()
+    {
+        return $this->hasOne('App\User');
+    }
 }

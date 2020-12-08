@@ -4,6 +4,19 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\User;
+use App\Models\Profile;
+use Auth;
+use Hash;
+use Mail;
+use Socialite;
+use Validator;
+use Cart;
+use App\Mail\Common;
+use App\Models\Authentic;
+// use App\Http\Controllers\User\Profile;
+
+
 
 class AuthController extends Controller
 {
