@@ -1,5 +1,14 @@
-XSym
-0026
-7fbf1de96873e3062c1fd6a0321048dc
-../phpunit/phpunit/phpunit
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+#!/usr/bin/env sh
+
+dir=$(cd "${0%[/\\]*}" > /dev/null; cd "../phpunit/phpunit" && pwd)
+
+if [ -d /proc/cygdrive ]; then
+    case $(which php) in
+        $(readlink -n /proc/cygdrive)/*)
+            # We are in Cygwin using Windows php, so the path must be translated
+            dir=$(cygpath -m "$dir");
+            ;;
+    esac
+fi
+
+"${dir}/phpunit" "$@"

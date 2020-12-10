@@ -10,7 +10,7 @@
 Sodium Compat is a pure PHP polyfill for the Sodium cryptography library 
 (libsodium), a core extension in PHP 7.2.0+ and otherwise [available in PECL](https://pecl.php.net/package/libsodium).
 
-This library tentativeley supports PHP 5.2.4 - 7.x (latest), but officially
+This library tentativeley supports PHP 5.2.4 - 8.x (latest), but officially
 only supports [non-EOL'd versions of PHP](https://secure.php.net/supported-versions.php).
 
 If you have the PHP extension installed, Sodium Compat will opportunistically
@@ -232,6 +232,18 @@ and the slowdown will be greatly reduced.
 This is also true of non-Windows 32-bit operating systems, or if somehow PHP
 was compiled where `PHP_INT_SIZE` equals `4` instead of `8` (i.e. Linux on i386).
 
+## Documentation
+
+First, you'll want to read the [Libsodium Quick Reference](https://paragonie.com/blog/2017/06/libsodium-quick-reference-quick-comparison-similar-functions-and-which-one-use).
+It aims to answer, "Which function should I use for [common problem]?".
+
+If you don't find the answers in the Quick Reference page, check out
+[*Using Libsodium in PHP Projects*](https://paragonie.com/book/pecl-libsodium).
+
+Finally, the [official libsodium documentation](https://download.libsodium.org/doc/) 
+(which was written for the C library, not the PHP library) also contains a lot of
+insightful technical information you may find helpful.
+
 ## API Coverage
 
 **Recommended reading:** [Libsodium Quick Reference](https://paragonie.com/blog/2017/06/libsodium-quick-reference-quick-comparison-similar-functions-and-which-one-use)
@@ -322,7 +334,6 @@ was compiled where `PHP_INT_SIZE` equals `4` instead of `8` (i.e. Linux on i386)
   To detect support for Argon2i at runtime, use
   `ParagonIE_Sodium_Compat::crypto_pwhash_is_available()`, which returns a
    boolean value (`TRUE` or `FALSE`).
-
 
 ### PHPCompatibility Ruleset
 

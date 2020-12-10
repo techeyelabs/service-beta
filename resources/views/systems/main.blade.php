@@ -80,9 +80,7 @@
         <div id="body" style="font-family: 'Goudy Old Style' !important; min-height: 700px !important">
             @yield('content')
         </div>
-        {{-- <div>
-            @include('sweetalert::alert')
-        </div> --}}
+
         <div>
             @include('systems.footer')
         </div>

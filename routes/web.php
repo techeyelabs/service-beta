@@ -11,7 +11,7 @@
     -Maizied"
 
 */
-// Authentication Routes Check
+// Authentication Blades Check
 
 Route::get('/authlog', function () { return view('authentication.login'); });
 Route::get('/authreg', function () { return view('authentication.register_request'); });
@@ -23,6 +23,7 @@ Route::get('/reset', function () { return view('authentication.passwords.reset')
 Route::get('/ereset', function () { return view('authentication.email.reset'); });
 Route::get('/regstep1', function () { return view('authentication.email.registration_step1'); });
 Route::get('/regstep2', function () { return view('authentication.email.registration_step2'); });
+// Route::get('/newproject', function () { return view('systems.new_project'); });
 
 // Authentication Routes
 Route::get('/homepage', 'User\HomeController@homepage')->name('homepage');
@@ -32,6 +33,16 @@ Route::get('/register/{token}', 'User\AuthController@register')->name('user-regi
 Route::post('/register/{token}', 'User\AuthController@registerAction')->name('user-register-action');
 Route::get('/login', 'User\HomeController@loginmethod')->name('login');
 Route::post('/login', 'User\HomeController@loginAction')->name('loginAction');
+Route::get('/logout', 'User\HomeController@logout')->name('user-logout');
+
+
+//ProductController
+Route::get('/addservice', 'User\ServiceProductController@loadForm')->name('get-add-service');
+Route::post('/addservice', 'User\ServiceProductController@storeProduct')->name('add-service');
+
+//Homepage Controller
+// Route::get('/addservice', 'User\ServiceProductController@storeProduct')->name('add-service');
+
 
 Route::get('/phpinfo', function(){
 	phpinfo();

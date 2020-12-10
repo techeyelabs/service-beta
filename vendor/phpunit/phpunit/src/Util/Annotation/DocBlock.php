@@ -14,6 +14,7 @@ use PHPUnit\Framework\InvalidDataProviderException;
 use PHPUnit\Framework\SkippedTestError;
 use PHPUnit\Framework\Warning;
 use PHPUnit\Util\Exception;
+use PHPUnit\Util\InvalidDataSetException;
 
 /**
  * This is an abstraction around a PHPUnit-specific docBlock,
@@ -164,7 +165,7 @@ final class DocBlock
         ];
 
         // Split docblock into lines and rewind offset to start of docblock
-        $lines  = \preg_split('/\r\n|\r|\n/', $this->docComment);
+        $lines = \preg_split('/\r\n|\r|\n/', $this->docComment);
         $offset -= \count($lines);
 
         foreach ($lines as $line) {
@@ -174,7 +175,7 @@ final class DocBlock
             }
 
             if (\preg_match(self::REGEX_REQUIRES_VERSION, $line, $matches)) {
-                $requires[$matches['name']]        = [
+                $requires[$matches['name']] = [
                     'version'  => $matches['version'],
                     'operator' => $matches['operator'],
                 ];
@@ -191,7 +192,7 @@ final class DocBlock
                 try {
                     $versionConstraintParser = new VersionConstraintParser;
 
-                    $requires[$matches['name'] . '_constraint']        = [
+                    $requires[$matches['name'] . '_constraint'] = [
                         'constraint' => $versionConstraintParser->parse(\trim($matches['constraint'])),
                     ];
                     $recordedOffsets[$matches['name'] . '_constraint'] = $offset;
@@ -312,7 +313,7 @@ final class DocBlock
 
         foreach ($data as $key => $value) {
             if (!\is_array($value)) {
-                throw new Exception(
+                throw new InvalidDataSetException(
                     \sprintf(
                         'Data set %s is invalid.',
                         \is_int($key) ? '#' . $key : '"' . $key . '"'
@@ -433,12 +434,14 @@ final class DocBlock
                 $dataProviderMethod = $dataProviderClass->getMethod(
                     $dataProviderMethodName
                 );
+                // @codeCoverageIgnoreStart
             } catch (\ReflectionException $e) {
                 throw new Exception(
                     $e->getMessage(),
                     (int) $e->getCode(),
                     $e
                 );
+                // @codeCoverageIgnoreEnd
             }
 
             if ($dataProviderMethod->isStatic()) {
@@ -542,7 +545,7 @@ final class DocBlock
         if (\preg_match_all('/@(?P<name>[A-Za-z_-]+)(?:[ \t]+(?P<value>.*?))?[ \t]*\r?$/m', $docBlock, $matches)) {
             $numMatches = \count($matches[0]);
 
-            for ($i = 0; $i < $numMatches; ++$i) {
+            for ($i = 0; $i < $numMatches; $i++) {
                 $annotations[$matches['name'][$i]][] = (string) $matches['value'][$i];
             }
         }

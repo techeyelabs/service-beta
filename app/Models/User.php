@@ -27,7 +27,10 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-
+    // public function category()
+    // {
+    //     return $this->hasMany('App\Models\Category', 'user_id');
+    // }
     public function profile()
     {
         return $this->hasOne('App\Models\Profile', 'user_id');
@@ -100,7 +103,7 @@ class User extends Authenticatable
         }
         foreach($months as $key => $value){
             if($this->purchaseAmountAtMonth($value, $year) <= 980){
-                return false; 
+                return false;
                 break;
             }
         }

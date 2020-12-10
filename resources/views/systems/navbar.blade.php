@@ -213,7 +213,7 @@
     <td style="width: 33.33%; vertical-align: bottom; text-align: right">
         {{--<div id="right" class="pt-4">Login/Registration</div>--}}
         @if(Auth::user())
-
+        <li class="list-inline-item"><a href="{{ route('user-logout') }}"  class="login_reg_buttons">Logout <b>/</b></a></li>
         <li class="list-inline-item" style="margin-top: -11px !important;">
             <a class="" style="">
                 <span id="large_menu" style="border: none" class="tooltipx">
@@ -252,7 +252,7 @@
         </li>
         @else
         <li class="list-inline-item"><a href="{{ route('login') }}"  class="login_reg_buttons">Login <b>/</b></a></li>
-        <li class="list-inline-item"><a href="#"
+        <li class="list-inline-item"><a href="{{ route('user-logout') }}"
                 class="login_reg_buttons">Logout</a></li>
         @endif
     </td>

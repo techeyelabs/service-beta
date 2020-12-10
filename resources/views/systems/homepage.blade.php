@@ -47,62 +47,64 @@
 <section class="project_list mb-5 pb-5">
 	<div class="col-md-12 alternates">
 		<div class="col-sm-12">
-
+        @if($latest)
 			<div class="text-left pl-1">
 				<h2 style="font-size: 1.5rem;">Latest Projects</h2>
 				<div style="height: 20px"></div>
 				<div class="row flex_cont pr-1">
-
+                @foreach($latest as $p)
 					<div class="col-md-3">
 					@include('systems.project-all')
 					</div>
-
+                    @endforeach
 				</div>
 			</div>
 			<button class="btn uBtn" style="float: right;" onclick="location.href='#';">See More..</button>
-
+	    @endif
+        @if($donation)
 			<div class="text-left pl-1 pt-5" id="topDonation">
 				<h2 style="font-size: 1.5rem;">Top Donation</h2>
 				<div style="height: 20px"></div>
 				<div class="row flex_cont pr-1" id="td">
-
+                @foreach($donation as $p)
 					<div class="col-md-3">
 						@include('systems.project-all')
 					</div>
-
+                    @endforeach
 				</div>
 			</div>
 			<button class="btn uBtn" style="float: right;" onclick="location.href='#';">See More..</button>
-
+            @endif
+            @if($endSoon)
 			<div class="text-left pl-1 pt-5">
 				<h2 style="font-size: 1.5rem;">End Soon</h2>
 
 				<div style="height: 20px"></div>
 				<div class="row flex_cont pr-1">
-
+                @foreach($endSoon as $p)
 					<div class="col-md-3">
 						@include('systems.project-all')
 					</div>
-
+                    @endforeach
 				</div>
 			</div>
 			<button class="btn uBtn" style="float: right;" onclick="location.href='#';">See More..</button>
-
-
+            @endif
+            @if($startSoon)
 			<div class="text-left pl-1 pt-5">
 				<h2 style="font-size: 1.5rem;">Coming Soon</h2>
 
 				<div style="height: 20px"></div>
 				<div class="row flex_cont pr-1">
-
+                @foreach($startSoon as $p)
 					<div class="col-md-3">
 						@include('systems.project-all')
 					</div>
-
+                    @endforeach
 				</div>
 			</div>
 			<button class="btn uBtn pb-4" style="float: right;" onclick="location.href='#';">See More..</button>
-
+            @endif
 
 
 

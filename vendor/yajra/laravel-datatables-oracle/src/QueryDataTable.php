@@ -2,11 +2,11 @@
 
 namespace Yajra\DataTables;
 
-use Illuminate\Support\Str;
-use Illuminate\Database\Query\Builder;
-use Yajra\DataTables\Utilities\Helper;
-use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
+use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Query\Expression;
+use Illuminate\Support\Str;
+use Yajra\DataTables\Utilities\Helper;
 
 class QueryDataTable extends DataTableAbstract
 {
@@ -108,6 +108,28 @@ class QueryDataTable extends DataTableAbstract
     }
 
     /**
+     * Perform search using search pane values.
+     */
+    protected function searchPanesSearch()
+    {
+        $columns = $this->request->get('searchPanes', []);
+
+        foreach ($columns as $column => $values) {
+            if ($this->isBlacklisted($column)) {
+                continue;
+            }
+
+            if ($this->searchPanes[$column] && $callback = $this->searchPanes[$column]['builder']) {
+                $callback($this->query, $values);
+            } else {
+                $this->query->whereIn($column, $values);
+            }
+
+            $this->isFilterApplied = true;
+        }
+    }
+
+    /**
      * Prepare query by executing count, filter, order and paginate.
      */
     protected function prepareQuery()
@@ -158,7 +180,9 @@ class QueryDataTable extends DataTableAbstract
     public function totalCount()
     {
         if ($this->skipTotalRecords) {
-            return true;
+            $this->isFilterApplied = true;
+
+            return 1;
         }
 
         return $this->totalRecords ? $this->totalRecords : $this->count();
@@ -389,7 +413,6 @@ class QueryDataTable extends DataTableAbstract
     protected function compileColumnSearch($i, $column, $keyword)
     {
         if ($this->request->isRegex($i)) {
-            $column = strstr($column, '(') ? $this->connection->raw($column) : $column;
             $this->regexColumnSearch($column, $keyword);
         } else {
             $this->compileQuerySearch($this->query, $column, $keyword, '');
@@ -404,6 +427,8 @@ class QueryDataTable extends DataTableAbstract
      */
     protected function regexColumnSearch($column, $keyword)
     {
+        $column = $this->wrap($column);
+
         switch ($this->connection->getDriverName()) {
             case 'oracle':
                 $sql = ! $this->config->isCaseInsensitive()
@@ -669,11 +694,15 @@ class QueryDataTable extends DataTableAbstract
      * Apply orderColumn custom query.
      *
      * @param string $column
-     * @param array  $orderable
+     * @param array $orderable
      */
     protected function applyOrderColumn($column, $orderable)
     {
         $sql = $this->columnDef['order'][$column]['sql'];
+        if ($sql === false) {
+            return;
+        }
+
         if (is_callable($sql)) {
             call_user_func($sql, $this->query, $orderable['direction']);
         } else {
