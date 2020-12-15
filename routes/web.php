@@ -23,10 +23,14 @@ Route::get('/reset', function () { return view('authentication.passwords.reset')
 Route::get('/ereset', function () { return view('authentication.email.reset'); });
 Route::get('/regstep1', function () { return view('authentication.email.registration_step1'); });
 Route::get('/regstep2', function () { return view('authentication.email.registration_step2'); });
-// Route::get('/newproject', function () { return view('systems.new_project'); });
+// Route::get('/service_details', function () { return view('systems.servicedetails'); });
+
+
+
+//Homepage Controller
+Route::get('/homepage', 'User\HomeController@homepage')->name('homepage');
 
 // Authentication Routes
-Route::get('/homepage', 'User\HomeController@homepage')->name('homepage');
 Route::get('/register-request', 'User\AuthController@registerRequest')->name('user-register-request');
 Route::post('/register-request', 'User\AuthController@registerRequestAction')->name('user-register-request-action');
 Route::get('/register/{token}', 'User\AuthController@register')->name('user-register');
@@ -35,13 +39,32 @@ Route::get('/login', 'User\HomeController@loginmethod')->name('login');
 Route::post('/login', 'User\HomeController@loginAction')->name('loginAction');
 Route::get('/logout', 'User\HomeController@logout')->name('user-logout');
 
+//Service Details Controller
+// Route::get('/service-details/{id}', 'User\ServiceProductController@serviceDetails')->name('service-details');   //Extra Design//
+Route::get('/service_details/{id}', 'User\ServiceProductController@serviceDetails')->name('service_details');
 
-//ProductController
+
+//ServiceController
 Route::get('/addservice', 'User\ServiceProductController@loadForm')->name('get-add-service');
 Route::post('/addservice', 'User\ServiceProductController@storeProduct')->name('add-service');
 
-//Homepage Controller
-// Route::get('/addservice', 'User\ServiceProductController@storeProduct')->name('add-service');
+//RequestController
+Route::get('/addrequest', 'User\RequestController@loadRequestForm')->name('get-add-request');
+Route::post('/addrequest', 'User\RequestController@storeRequest')->name('add-request');
+Route::get('/myrequest', 'User\RequestController@myrequest')->name('my-request');
+Route::get('/myrequestdetails/{id}', 'User\RequestController@myrequestdetails')->name('my-request-details');
+
+// Profile Controller
+Route::get('/myprofile', 'User\ProfileController@myProfile')->name('my-profile');
+Route::get('/visitprofile', 'User\ProfileController@visitProfile')->name('visit-profile');
+
+//Profile update routes
+Route::post('/updatePic', 'User\ProfileController@updatePic')->name('update-pic');
+Route::post('/basic-update', 'User\ProfileController@updatebasic')->name('update-basic');
+Route::post('/intro-update', 'User\ProfileController@updateintro')->name('intro-basic');
+Route::post('/payment-info-update', 'User\ProfileController@updatepayment')->name('update-payment');
+
+
 
 
 Route::get('/phpinfo', function(){

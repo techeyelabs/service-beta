@@ -59,7 +59,7 @@
     @if (isset($big_one))
         <div class="col-md-6 extra_div ratio_test" style="margin-bottom: 30px">
             <div>
-                <a href="#">
+                <a href=" {{route('service_details', ['id' => $big_one->id])}}">
                     <div class="project_img" style="width:100%; background-color:#fff; background-repeat: no-repeat;
 						background-position: center center; background-size: cover;">
                         <img class="big_sticker" src="{{url('uploads/products/'.$big_one->thumbnail_image)}}"
@@ -106,7 +106,7 @@
                 <div class="col-6 small_collapse" style="padding-right: 5px !important">
                 @if(count($small_four) >= 1)
                     <div class="project_item four_stickers extra_div small_screen_font" style="">
-                        <a href="#">
+                        <a href="{{route('service_details', ['id' => $small_four[0]->id])}}">
                             <div class="project_img small_sticker small_sticker_styles"
                                 style="background-image: url({{url('uploads/products/'.$small_four[0]->thumbnail_image)}});">
                             </div>
@@ -151,7 +151,7 @@
                 <div class="col-6 small_collapse" style="padding-left: 5px !important">
                 @if(count($small_four) >= 2)
                     <div class="project_item four_stickers extra_div small_screen_font" style="">
-                        <a href="#">
+                        <a href="{{route('service_details', ['id' => $small_four[1]->id])}}">
                             <div class="project_img small_sticker small_sticker_styles"
                                 style="background-image:  url({{url('uploads/products/'.$small_four[1]->thumbnail_image)}});">
                             </div>
@@ -198,7 +198,7 @@
                 <div class="col-6 small_collapse" style="padding-right: 5px !important">
                 @if(count($small_four) >= 3)
                     <div class="project_item four_stickers extra_div small_screen_font" style="">
-                        <a href="#">
+                        <a href="{{route('service_details', ['id' => $small_four[2]->id])}}">
                             <div class="project_img small_sticker small_sticker_styles"
                                 style="background-image: url({{url('uploads/products/'.$small_four[2]->thumbnail_image)}});">
                             </div>
@@ -243,7 +243,7 @@
                 <div class="col-6 small_collapse" style="padding-left: 5px !important">
                 @if(count($small_four) >= 4)
                     <div class="project_item four_stickers extra_div small_screen_font" style="">
-                        <a href="#">
+                        <a href="{{route('service_details', ['id' => $small_four[3]->id])}}">
                             <div class="project_img small_sticker small_sticker_styles"
                                 style="background-image:  url({{url('uploads/products/'.$small_four[3]->thumbnail_image)}});">
                             </div>

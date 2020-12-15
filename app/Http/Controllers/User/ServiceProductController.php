@@ -24,7 +24,7 @@ class ServiceProductController extends Controller
     {
         $data['categories'] = Category::get();
         $data['affiliate_reward'] = AffiliateReward::get();
-    	return view("systems.new_project" , $data);
+    	return view("systems.new_service" , $data);
     }
 
     public function storeProduct(Request $request)
@@ -42,7 +42,7 @@ class ServiceProductController extends Controller
             $img->save($fullPath);
 
 
-         }
+        }
         $purposeImageOriginal = '';
         if ($request->hasFile('service_image')) {
             $extension = $request->service_image->extension();
@@ -64,7 +64,7 @@ class ServiceProductController extends Controller
         }
 
         $Product->thumbnail_image = $name;
-         //dd($name);
+        //dd($name);
         $Product->service_image = $purposeImageOriginal;
         $Product->additional_details_image = $detailImageOriginal;
         $Product->user_id = Auth::user()->id;
@@ -73,7 +73,7 @@ class ServiceProductController extends Controller
         $Product->price = $request->price;
         $Product->additional_details = $request->additional_details;
         $Product->service_details = $request->service_details;
-        $Product->status = 1;
+        $Product->status = 0;
         $Product->affiliator_commission = $request->reward;
         $Product->self_purchasable =$request-> has('self_purchasable') ? true : false;
         $Product->save();
@@ -81,6 +81,21 @@ class ServiceProductController extends Controller
 
         return redirect()->route('get-add-service');
     }
+
+    public function serviceDetails(Request $request)
+    {
+
+        $query = Product::where('id', $request->id);
+        $data['service'] = $query->with('user')->first();
+        return view('systems.servicedetails', $data);
+        // dd($data['service']);
+    }
+    public function det(Request $request)
+    {
+
+        return view('systems.service_details');
+    }
+
 
 
 

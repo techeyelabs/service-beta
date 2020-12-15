@@ -58,5 +58,9 @@ class Product extends Model
     {
         return \App\Models\RatingStar::where('product_id', $this->id)->avg('rating_star');
     }
+    public function user()
+    {
+        return $this->hasOne('App\Models\User', 'id', 'user_id');
+    }
 
 }

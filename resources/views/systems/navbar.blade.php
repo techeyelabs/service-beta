@@ -132,7 +132,7 @@
             <tbody>
                 <tr style="border-bottom: 1px solid #dadada">
                     <td style="vertical-align: bottom; padding-bottom: 10px" style="width: 33.33%">
-                        <a href="#" class="p-1"><img height="55px"
+                        <a href="{{route('homepage')}}" class="p-1"><img height="55px"
                                 src="{{Request::root()}}/assets/systemasset/servicelogo.png" /></a>
                     </td>
                     <td class="nn" style="vertical-align: bottom; width: 33.33%; text-align: center" id="menuBar">
@@ -211,9 +211,7 @@
     <a style="padding-left: 0px; padding-right: 10px; font-size: 25px"><b>Talk</b></a>
     </td>
     <td style="width: 33.33%; vertical-align: bottom; text-align: right">
-        {{--<div id="right" class="pt-4">Login/Registration</div>--}}
         @if(Auth::user())
-        <li class="list-inline-item"><a href="{{ route('user-logout') }}"  class="login_reg_buttons">Logout <b>/</b></a></li>
         <li class="list-inline-item" style="margin-top: -11px !important;">
             <a class="" style="">
                 <span id="large_menu" style="border: none" class="tooltipx">
@@ -225,26 +223,32 @@
                     <div class="tooltiptext" style="width: 180px; text-align: left; margin-left: -100px !important; z-index: 1 !important;">
                         <div class="bottomline" style="padding-bottom: 0px !important; font-size: 14px" id="my-name">
                             {{Auth::user()->first_name.' '.Auth::user()->last_name}}</div>
-                        <div class="bottomline pb-3" style="border-bottom: 1px solid #ccc; padding-top: 0px !important"
-                            id="my-page">My Page</div>
-                        <div class="bottomline pt-3" id="projectsupport">Contributed Projects</div>
-                        <div class="bottomline" id="projectdrafts">My Projects</div>
-                        <div class="bottomline pb-3" style="border-bottom: 1px solid #ccc">
-                            <p id="projectUpload" class="mb-0">Start Raising</p>
-                        </div>
+                        <div class="bottomline pb-3" style="border-bottom: 1px solid #ccc; padding-top: 0px !important" id="my-page">My Page</div>
+                        <!-- Seller Section  -->
+
+                        <div class="bottomline pt-3" id="" style="padding-bottom: 0px !important; font-size: 14px">Seller Menu</div>
+                        <div class="bottomline" id="dashboard">Dashboard</div>
+                        <div class="bottomline" id="createService">Create Service</div>
+                        <div class="bottomline" id="">Proposed Requests</div>
+                        <div class="bottomline" id="">Sales Management </div>
+                        <div class="bottomline" id="">Wallet </div>
+                        <div class="bottomline pb-3" style="border-bottom: 1px solid #ccc"> <p id="" class="mb-0">Follower List</p></div>
+                        <!-- Buyer Section  -->
+
+                        <div class="bottomline pt-3" id="" style="padding-bottom: 0px !important; font-size: 14px">Buyer Menu</div>
+                        <div class="bottomline" id="myrequestdetails">New Requested Services</div>
+                        <div class="bottomline" id="">Purchased List</div>
+                        <div class="bottomline" id="">Favorite</div>
+                        <div class="bottomline pb-3" style="border-bottom: 1px solid #ccc"> <p id="" class="mb-0">Follow</p></div>
 
 
-                                        <div class="bottomline notification mt-2 mb-1" id="notification">
-
+                        <!-- New Section  -->
+                            <div class="bottomline notification mt-2 mb-1" id="notification">
                                             <span class="mb-0" style="padding-bottom: 0px !important; padding-top:4px !important;">	Notifications </span>
                                             <!-- <span class="badge" id="badgecount">3</span> -->
                                         </div>
-
-
                         <div class="bottomline pt-3 pb-3" style="border-bottom: 1px solid #ccc; padding-top: 0px !important;" id="mymessage">Message
                         </div>
-
-
                         <div class="bottomline pt-3" id="logout">LogOut</div>
                     </div>
                 </span>
@@ -252,8 +256,8 @@
         </li>
         @else
         <li class="list-inline-item"><a href="{{ route('login') }}"  class="login_reg_buttons">Login <b>/</b></a></li>
-        <li class="list-inline-item"><a href="{{ route('user-logout') }}"
-                class="login_reg_buttons">Logout</a></li>
+        <li class="list-inline-item"><a href="{{ route('user-register-request') }}"
+                class="login_reg_buttons">Register</a></li>
         @endif
     </td>
     </tr>
@@ -292,7 +296,7 @@
 
 
 <!-- big header 2 -->
-
+@if(Route::current()->getName() == 'homehomepage')
 <div style="height: 85px;">
     <div class="col-md-12 alternates">
         <table style="width: 100%; height: 85px">
@@ -316,6 +320,7 @@
         </table>
     </div>
 </div>
+@endif
 
 
 

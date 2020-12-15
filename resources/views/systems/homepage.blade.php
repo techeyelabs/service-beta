@@ -28,19 +28,31 @@
 @section('content')
 
 
+
+
 <div style="width: 100%; height: 10px">&nbsp;</div>
 <div class="res_banner p-0">
 	@include('systems.banner')
 </div>
 <br />
 <section class="project_list flex_cont p-3" style="">
-	<div class="col-md-12 alternates">
-		<div class="col-sm-12 ml-1 mr-1">
-			<div class=" text-center  pl-2 pr-2">
-				<div><a href="#"><button class="extra_banner_top btn uBtnB"
-							style="font-size: 25px !important"><b>Start Raising</b></button></a></div>
-			</div>
-		</div>
+	<div class=" row col-md-12 alternates">
+		<div class="col-md-2"></div>
+        <div class="col-md-4 mr-0 text-right">
+        <div>
+                <a href="{{route('add-service')}}">
+                    <button class="extra_banner_top btn uBtnB " style="font-size: 25px !important; width:80% !important;"><b>Create Service</b></button>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div>
+                <a href="{{route('add-request')}}">
+                    <button class="extra_banner_top btn uBtnB " style="font-size: 25px !important; width:80% !important;"><b>Request</b></button>
+                </a>
+            </div>
+        </div>
+		<div class="col-md-2"></div>
 	</div>
 </section>
 <br />

@@ -128,4 +128,13 @@ class User extends Authenticatable
                                     ->get();
         return $eligibles;
     }
+    static function shippings($id)
+    {
+        return DB::table('users')
+                ->select('shipping_address', 'shipping_street_address', 'shipping_city', 'shipping_state',
+                        'shipping_postal_code', 'shipping_country', 'shipping_prefecture', 'shipping_municipility',
+                        'shipping_room_num', 'shipping_phone_num')
+                ->where('id', $id)
+                ->first();
+    }
 }

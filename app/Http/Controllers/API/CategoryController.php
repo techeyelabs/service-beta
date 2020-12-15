@@ -16,6 +16,7 @@ class CategoryController extends Controller
     	$data['categories'] = Category::all();
     	return view("backend.category.new_category" , $data);
     }
+    
 
     public function categoryList()
     {
